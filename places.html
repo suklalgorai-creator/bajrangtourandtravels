@@ -82,45 +82,105 @@
         </div>
     </header>
 
-    <div class="gallery-header">
+    <div class="gallery-header" style="padding-bottom: 2rem;">
         <div class="container">
             <h1>Places to Visit</h1>
             <p>A visual journey through the beautiful landscapes of Ghatshila and Jamshedpur.</p>
         </div>
     </div>
 
-    <!-- Ghatshila Gallery -->
-    <section class="gallery-section">
+    <!-- Tabs -->
+    <div class="gallery-tabs" style="background: var(--bg-light); padding-bottom: 3rem; text-align: center;">
         <div class="container">
-            <h2 class="gallery-title">Ghatshila & Jadugoda</h2>
+            <div class="tab-buttons" style="display: inline-flex; gap: 1rem; background: var(--white); padding: 0.5rem; border-radius: 50px; box-shadow: var(--shadow-sm);">
+                <button class="tab-btn active" onclick="switchTab('ghatsila')" style="padding: 0.75rem 2rem; border-radius: 50px; border: none; font-weight: 600; font-family: inherit; font-size: 1rem; cursor: pointer; transition: 0.3s; background: var(--primary); color: white;">Ghatshila & Jadugoda</button>
+                <button class="tab-btn" onclick="switchTab('jamshedpur')" style="padding: 0.75rem 2rem; border-radius: 50px; border: none; font-weight: 600; font-family: inherit; font-size: 1rem; cursor: pointer; transition: 0.3s; background: transparent; color: var(--text-main);">Jamshedpur</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ghatshila Gallery -->
+    <section class="gallery-section tab-content active" id="ghatsila-tab" style="padding-top: 2rem;">
+        <div class="container">
             <div class="photo-grid" id="ghatsila-gallery">
+                <!-- 1. Burudi Dam -->
                 <div class="photo-card">
                     <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Burudi Dam</small></span>
-                    <!-- HINT: Add your photo like this -->
-                    <!-- <img src="burudi.jpg" alt="Burudi Dam"> -->
-                    <!-- <div class="photo-caption">Burudi Dam</div> -->
+                    <!-- <img src="images/burudi.jpg" alt="Burudi Dam"> -->
                 </div>
+                <!-- 2. Dharagiri Fall -->
                 <div class="photo-card">
                     <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Dharagiri Fall</small></span>
                 </div>
+                <!-- 3. Phuldungri Hill -->
                 <div class="photo-card">
                     <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
-                    <span style="display:block; text-align:center;">Add Photo<br><small>Subarnarekha River</small></span>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Phuldungri Hill</small></span>
                 </div>
+                <!-- 4. Rankini Mandir -->
                 <div class="photo-card">
                     <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Rankini Mandir</small></span>
+                </div>
+                <!-- 5. Raat Mohona -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Raat Mohona</small></span>
+                </div>
+                <!-- 6. Subarnarekha Riverside -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Subarnarekha Riverside</small></span>
+                </div>
+                <!-- 7. Galudih Barrage -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Galudih Barrage</small></span>
+                </div>
+                <!-- 8. Gouri Kunj -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Gouri Kunj</small></span>
+                </div>
+                <!-- 9. Panch Pandav Rock -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Panch Pandav Rock</small></span>
+                </div>
+                <!-- 10. Ghatshila Rajbari -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Ghatshila Rajbari</small></span>
+                </div>
+                <!-- 11. Rankini Mandir (Rohinibera) -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Rankini Mandir (Rohinibera)</small></span>
+                </div>
+                <!-- 12. Galudih Bridge -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Galudih Bridge</small></span>
+                </div>
+                <!-- 13. Siddheshwar Nath Temple -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Siddheshwar Nath Temple</small></span>
+                </div>
+                <!-- 14. Jadugoda Hills -->
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Jadugoda Hills</small></span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Jamshedpur Gallery -->
-    <section class="gallery-section" style="background: var(--bg-light);">
+    <section class="gallery-section tab-content" id="jamshedpur-tab" style="padding-top: 2rem; display: none;">
         <div class="container">
-            <h2 class="gallery-title">Jamshedpur Tour</h2>
             <div class="photo-grid" id="jamshedpur-gallery">
                 <div class="photo-card">
                     <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
@@ -134,9 +194,32 @@
                     <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Dalma Wildlife</small></span>
                 </div>
+                <div class="photo-card">
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <span style="display:block; text-align:center;">Add Photo<br><small>Tata Steel Zoological Park</small></span>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Tab Switching Script -->
+    <script>
+        function switchTab(tabId) {
+            // Update buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--text-main)';
+            });
+            event.target.style.background = 'var(--primary)';
+            event.target.style.color = 'white';
+
+            // Show/Hide content
+            document.getElementById('ghatsila-tab').style.display = 'none';
+            document.getElementById('jamshedpur-tab').style.display = 'none';
+            document.getElementById(tabId + '-tab').style.display = 'block';
+        }
+    </script>
 
     <!-- Footer -->
     <footer class="footer">
