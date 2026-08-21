@@ -23,17 +23,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('footer-copyright-name').textContent = d.brand.fullName;
     document.getElementById('footer-tagline').textContent = d.brand.tagline;
     document.getElementById('current-year').textContent = new Date().getFullYear();
-    document.getElementById('contact-address').textContent = d.brand.address;
+    const contactAddress = document.getElementById('contact-address');
+    if (contactAddress) contactAddress.textContent = d.brand.address;
+
     if (d.brand.phone) {
-        document.getElementById('contact-phone').textContent = d.brand.displayPhone;
-        document.getElementById('contact-phone-link').href = `tel:${d.brand.phone}`;
-        document.getElementById('hero-phone-text').textContent = d.brand.displayPhone;
-        document.getElementById('hero-phone-btn').href = `tel:${d.brand.phone}`;
+        const contactPhone = document.getElementById('contact-phone');
+        if (contactPhone) contactPhone.textContent = d.brand.displayPhone;
+        const contactPhoneLink = document.getElementById('contact-phone-link');
+        if (contactPhoneLink) contactPhoneLink.href = `tel:${d.brand.phone}`;
+        
+        const heroPhoneText = document.getElementById('hero-phone-text');
+        if (heroPhoneText) heroPhoneText.textContent = d.brand.displayPhone;
+        const heroPhoneBtn = document.getElementById('hero-phone-btn');
+        if (heroPhoneBtn) heroPhoneBtn.href = `tel:${d.brand.phone}`;
+        
         const waBtn = document.getElementById('whatsapp-btn');
-        if(waBtn) waBtn.href = `https://wa.me/91${d.brand.phone}`;
+        if(waBtn) waBtn.href = `https://wa.me/91${d.brand.phone}?text=Hello!`;
+
     } else {
-        const contactPhoneEl = document.getElementById('contact-phone');
-        if (contactPhoneEl) contactPhoneEl.closest('.info-item').style.display = 'none';
         
         const heroPhoneBtn = document.getElementById('hero-phone-btn');
         if (heroPhoneBtn) heroPhoneBtn.style.display = 'none';
@@ -42,8 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (whatsappBtn) whatsappBtn.style.display = 'none';
     }
 
-    document.getElementById('contact-email').textContent = d.brand.email;
-    document.getElementById('contact-email-link').href = `mailto:${d.brand.email}`;
+    const contactEmail = document.getElementById('contact-email');
+    if (contactEmail) contactEmail.textContent = d.brand.email;
+    const contactEmailLink = document.getElementById('contact-email-link');
+    if (contactEmailLink) contactEmailLink.href = `mailto:${d.brand.email}`;
     // Google Map
     const mapIframe = document.getElementById('google-map');
     if (mapIframe && d.brand.mapEmbed) {
@@ -115,35 +124,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const pkgSelect = document.getElementById('packageSelect');
 
     if (pkgContainer && d.packages) {
+        const tierIcons = { 'Basic': 'ph-leaf', 'Premium': 'ph-diamond', 'Pro': 'ph-crown' };
         let html = '';
         d.packages.forEach(pkg => {
-            // Dropdown option
-            const opt = document.createElement('option');
-            opt.value = pkg.title;
-            opt.textContent = pkg.title;
-            if (pkgSelect) pkgSelect.appendChild(opt);
+            const icon = tierIcons[pkg.title] || 'ph-package';
 
             const inclusions = pkg.inclusions.map(inc =>
                 `<li><i class="ph-fill ph-check-circle"></i> ${inc}</li>`
             ).join('');
 
+            let btnClass = 'btn-secondary';
+            if (pkg.title === 'Basic') btnClass = 'btn-light';
+            else if (pkg.title === 'Premium') btnClass = 'btn-primary';
+            else if (pkg.title === 'Pro') btnClass = 'btn-dark';
+
             html += `
-                <div class="package-card animate-on-scroll ${pkg.popular ? 'popular' : ''}">
-                    ${pkg.popular ? '<div class="popular-tag">Most Popular</div>' : ''}
+                <div class="package-card animate-on-scroll ${pkg.popular ? 'popular' : ''} card-tier-${pkg.title.toLowerCase()}">
+                    ${pkg.tag ? `<div class="popular-tag tier-${pkg.title.toLowerCase()}">${pkg.tag}</div>` : ''}
                     <div class="package-header">
+                        <div class="package-tier-icon"><i class="ph-fill ${icon}"></i></div>
                         <span class="package-duration">${pkg.duration}</span>
                         <h3>${pkg.title}</h3>
-                        <div class="package-price">
-                            <span class="amount">${pkg.price}</span>
-                            <span class="unit"> / ${pkg.unit}</span>
-                        </div>
                     </div>
                     <div class="package-body">
                         <p class="package-desc">${pkg.description}</p>
                         <ul class="package-inclusions">${inclusions}</ul>
                     </div>
                     <div class="package-footer">
-                        <a href="#contact" class="btn ${pkg.popular ? 'btn-primary' : 'btn-secondary'} btn-block" onclick="selectPackage('${pkg.title}')">
+                        <a href="#" class="btn ${btnClass} btn-block wa-book-btn">
                             Book This Package
                         </a>
                     </div>
@@ -151,41 +159,95 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
         pkgContainer.innerHTML = html;
+
+        // Setup dots
+        const packagesDots = document.getElementById('packages-dots');
+        if (packagesDots && pkgContainer) {
+            d.packages.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = `scroll-dot ${idx === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => {
+                    const card = pkgContainer.children[idx];
+                    pkgContainer.scrollTo({ left: card.offsetLeft - pkgContainer.offsetLeft - 16, behavior: 'smooth' });
+                });
+                packagesDots.appendChild(dot);
+            });
+
+            pkgContainer.addEventListener('scroll', () => {
+                const scrollLeft = pkgContainer.scrollLeft;
+                const cardWidth = pkgContainer.firstElementChild.offsetWidth;
+                const index = Math.round(scrollLeft / cardWidth);
+                const dots = packagesDots.querySelectorAll('.scroll-dot');
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            });
+        }
     }
 
     // ── 4. Tourist Places ──
     const placesContainer = document.getElementById('places-container');
     if (placesContainer && d.places) {
         let html = '';
-        d.places.forEach((place) => {
-            html += `
-                <div class="place-card animate-on-scroll" data-img="${place.image}" data-caption="${place.name}">
-                    <img src="${place.image}" alt="${place.name}" loading="lazy">
-                    <div class="place-info">
-                        <h4>${place.name}</h4>
-                        <p>${place.desc}</p>
-                    </div>
+        
+        // Ghatshila & Jadugoda Block
+        const ghatsilaItems = d.places.ghatsila.map(place => 
+            `<li><i class="ph-fill ph-map-pin"></i> ${place}</li>`
+        ).join('');
+        
+        const ghatsilaMedia = d.places.ghatsilaImage 
+            ? `<img src="${d.places.ghatsilaImage}" alt="Ghatshila Places" style="width:100%; height:220px; object-fit:cover; display:block;">` 
+            : `<div class="place-list-image-placeholder">
+                    <i class="ph ph-image"></i>
+                    <span>Add Ghatshila Photo Here (800x400)</span>
+               </div>`;
+
+        html += `
+            <div class="place-list-card animate-on-scroll ghatsila-card">
+                ${ghatsilaMedia}
+                <div class="place-list-header">
+                    <h3>Ghatshila & Jadugoda</h3>
+                    <p>Local Sightseeing</p>
                 </div>
-            `;
-        });
+                <ul class="place-list" style="flex: 1;">
+                    ${ghatsilaItems}
+                </ul>
+                <div style="padding: 0 2rem 2rem; margin-top: auto;">
+                    <a href="#" class="btn btn-primary btn-block wa-book-btn">Book This Tour</a>
+                </div>
+            </div>
+        `;
+
+        // Jamshedpur Block
+        const jamshedpurItems = d.places.jamshedpur.map(place => 
+            `<li><i class="ph-fill ph-map-pin"></i> ${place}</li>`
+        ).join('');
+
+        const jamshedpurMedia = d.places.jamshedpurImage 
+            ? `<img src="${d.places.jamshedpurImage}" alt="Jamshedpur Places" style="width:100%; height:220px; object-fit:cover; display:block;">` 
+            : `<div class="place-list-image-placeholder">
+                    <i class="ph ph-image"></i>
+                    <span>Add Jamshedpur Photo Here (800x400)</span>
+               </div>`;
+
+        html += `
+            <div class="place-list-card animate-on-scroll jamshedpur-card">
+                ${jamshedpurMedia}
+                <div class="place-list-header">
+                    <h3>Jamshedpur Tour</h3>
+                    <p>Top Places</p>
+                </div>
+                <ul class="place-list" style="flex: 1;">
+                    ${jamshedpurItems}
+                </ul>
+                <div style="padding: 0 2rem 2rem; margin-top: auto;">
+                    <a href="#" class="btn btn-primary btn-block wa-book-btn" style="background:#1d4ed8;box-shadow:0 4px 14px rgba(29,78,216,0.35)">Book This Tour</a>
+                </div>
+            </div>
+        `;
+
         placesContainer.innerHTML = html;
+        placesContainer.className = 'places-lists-container'; // Change class to avoid old grid styles
     }
 
-    // ── 5. How to Reach ──
-    const reachContainer = document.getElementById('reach-container');
-    if (reachContainer && d.howToReach) {
-        let html = '';
-        d.howToReach.forEach(item => {
-            html += `
-                <div class="reach-card animate-on-scroll">
-                    <div class="reach-icon"><i class="${item.icon}"></i></div>
-                    <h3>${item.mode}</h3>
-                    <p>${item.details}</p>
-                </div>
-            `;
-        });
-        reachContainer.innerHTML = html;
-    }
 
     // ── 6. Testimonials ──
     const reviewsContainer = document.getElementById('reviews-container');
@@ -435,6 +497,71 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1800);
         });
     }
+
+    // ── Booking Modal Logic ──
+    const bookingModal = document.getElementById('bookingModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const bookingForm = document.getElementById('bookingForm');
+    const bookSubject = document.getElementById('bookSubject');
+    const bookingPackageName = document.getElementById('bookingPackageName');
+
+    if (bookingModal) {
+        document.body.addEventListener('click', (e) => {
+            if (e.target.closest('.wa-book-btn')) {
+                e.preventDefault();
+                const btn = e.target.closest('.wa-book-btn');
+                const card = btn.closest('.package-card') || btn.closest('.place-list-card');
+                let subjectName = "General Booking";
+                
+                if (card) {
+                    const heading = card.querySelector('h3');
+                    if (heading) subjectName = heading.textContent;
+                } else if (btn.textContent.trim() !== '' && btn.textContent.trim() !== 'Book Now') {
+                    subjectName = btn.textContent.trim();
+                }
+
+                bookSubject.value = subjectName;
+                bookingPackageName.textContent = `For: ${subjectName}`;
+                bookingModal.classList.add('active');
+            }
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            bookingModal.classList.remove('active');
+        });
+
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) bookingModal.classList.remove('active');
+        });
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('bookName').value;
+            const phone = document.getElementById('bookPhone').value;
+            const date = document.getElementById('bookDate').value;
+            const people = document.getElementById('bookPeople').value;
+            const pickup = document.getElementById('bookPickup').value;
+            const subject = bookSubject.value;
+
+            const waMessage = encodeURIComponent(
+                `Hello Bajrang Tour And Travels! I want to book a trip.\n\n` +
+                `📝 *Booking Details:*\n` +
+                `👤 Name: ${name}\n` +
+                `📞 Mobile: ${phone}\n` +
+                `📌 Interested In: ${subject}\n` +
+                `📅 Date: ${date}\n` +
+                `👥 No. of People: ${people}\n` +
+                `📍 Pickup Location: ${pickup || 'Not specified'}\n\n` +
+                `Please confirm my booking and share the fare. Thanks!`
+            );
+            
+            const waLink = `https://wa.me/91${d.brand.phone}?text=${waMessage}`;
+            window.open(waLink, '_blank');
+            bookingModal.classList.remove('active');
+            bookingForm.reset();
+        });
+    }
+
 });
 
 // Global: pre-select package from package cards

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="site-title">Travel Tour Operator</title>
-    <meta name="description" id="site-desc" content="Premium local tour operator services.">
+    <title id="site-title">Bajrang Tour And Travels</title>
+    <meta name="description" id="site-desc" content="Premium local tour operator services in Ghatshila by Bajrang Tour And Travels.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -21,7 +21,22 @@
     <!-- Loading Screen -->
     <div class="loader" id="loader">
         <div class="loader-inner">
-            <i class="ph-fill ph-mountains"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="brand-logo loader-logo" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Hair / Crown -->
+                <path d="M40 20 C60 10, 80 20, 75 35 C70 50, 50 35, 45 50" />
+                <!-- Profile: Forehead, Nose, Mouth, Chin -->
+                <path d="M45 50 C45 45, 55 40, 60 45 C65 50, 70 60, 65 65 C60 65, 55 70, 60 75 C65 80, 50 85, 45 85" />
+                <!-- Ear -->
+                <path d="M35 55 C25 50, 20 65, 35 70" />
+                <!-- Earring -->
+                <circle cx="32" cy="73" r="3" fill="currentColor" stroke="none" />
+                <!-- Eye -->
+                <path d="M50 48 C53 45, 57 45, 60 48" />
+                <!-- Tilak -->
+                <path d="M55 35 L55 42" stroke-width="3" />
+                <!-- Neck / Back of Head -->
+                <path d="M35 70 C30 80, 35 90, 45 95" />
+            </svg>
             <div class="loader-bar"><div class="loader-progress"></div></div>
             <p>Loading your adventure...</p>
         </div>
@@ -31,16 +46,30 @@
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <i class="ph-fill ph-mountains"></i>
-                <span id="brand-name-nav">Travel Tours</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="brand-logo" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Hair / Crown -->
+                    <path d="M40 20 C60 10, 80 20, 75 35 C70 50, 50 35, 45 50" />
+                    <!-- Profile: Forehead, Nose, Mouth, Chin -->
+                    <path d="M45 50 C45 45, 55 40, 60 45 C65 50, 70 60, 65 65 C60 65, 55 70, 60 75 C65 80, 50 85, 45 85" />
+                    <!-- Ear -->
+                    <path d="M35 55 C25 50, 20 65, 35 70" />
+                    <!-- Earring -->
+                    <circle cx="32" cy="73" r="3" fill="currentColor" stroke="none" />
+                    <!-- Eye -->
+                    <path d="M50 48 C53 45, 57 45, 60 48" />
+                    <!-- Tilak -->
+                    <path d="M55 35 L55 42" stroke-width="3" />
+                    <!-- Neck / Back of Head -->
+                    <path d="M35 70 C30 80, 35 90, 45 95" />
+                </svg>
+                <span id="brand-name-nav">Bajrang Tours</span>
             </a>
             <nav class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#packages">Packages</a>
                 <a href="#places">Places</a>
-                <a href="#reach">How to Reach</a>
                 <a href="#reviews">Reviews</a>
-                <a href="#contact" class="btn btn-primary">Book Now</a>
+                <a href="#" class="btn btn-primary wa-book-btn">Book Now</a>
             </nav>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
                 <i class="ph ph-list"></i>
@@ -51,10 +80,9 @@
             <a href="#home">Home</a>
             <a href="#packages">Packages</a>
             <a href="#places">Places</a>
-            <a href="#reach">How to Reach</a>
             <a href="#reviews">Reviews</a>
             <a href="#faqs">FAQs</a>
-            <a href="#contact">Book Now</a>
+            <a href="#" class="wa-book-btn">Book Now</a>
         </div>
     </header>
 
@@ -71,11 +99,11 @@
             <h1 id="hero-heading">Discover Ghatshila</h1>
             <p id="hero-tagline">Your trusted local guide to pristine lakes, ancient temples, and breathtaking landscapes.</p>
             <div class="hero-actions">
-                <a href="#packages" class="btn btn-primary btn-large">
-                    <i class="ph-fill ph-compass"></i> View Packages
+                <a href="#" class="btn btn-primary btn-large wa-book-btn">
+                    <i class="ph-fill ph-calendar-check"></i> Book Now
                 </a>
                 <a href="#" class="btn btn-glass btn-large" id="hero-phone-btn">
-                    <i class="ph-fill ph-phone-call"></i> <span id="hero-phone-text">Call Us</span>
+                    <i class="ph-fill ph-phone-call"></i> Call Now
                 </a>
             </div>
         </div>
@@ -87,28 +115,61 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container stats-grid">
-            <div class="stat-card animate-on-scroll">
-                <i class="ph-fill ph-star"></i>
-                <h2><span class="counter" data-target="4.2">0</span>/5</h2>
-                <p>Google Rating</p>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">What We Offer</span>
+                <h2>Our Core Services</h2>
+                <p>Safe journeys, comfortable rides, and affordable fares for all your needs.</p>
             </div>
-            <div class="stat-card animate-on-scroll">
-                <i class="ph-fill ph-calendar-check"></i>
-                <h2><span class="counter" data-target="20">0</span>+</h2>
-                <p>Years Experience</p>
-            </div>
-            <div class="stat-card animate-on-scroll">
-                <i class="ph-fill ph-users-three"></i>
-                <h2><span class="counter" data-target="10">0</span>k+</h2>
-                <p>Happy Tourists</p>
-            </div>
-            <div class="stat-card animate-on-scroll">
-                <i class="ph-fill ph-medal"></i>
-                <h2>Top</h2>
-                <p>Local Operator</p>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-map-pin-line"></i></div>
+                    <h3>Local Sightseeing</h3>
+                    <p>Ghatshila, Jadugoda & Jamshedpur Tours</p>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-train"></i></div>
+                    <h3>Railway Station</h3>
+                    <p>Timely pickups and drops</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-users-three"></i></div>
+                    <h3>Wedding Booking</h3>
+                    <p>AC Ertiga available for events</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-taxi"></i></div>
+                    <h3>Local & Outstation Cabs</h3>
+                    <p>Safe and comfortable cab services for local Ghatshila sightseeing or outstation drops.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-car"></i></div>
+                    <h3>Car Rentals</h3>
+                    <p>Affordable car rental options for self-drive or with a professional driver to suit your travel needs.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-heart"></i></div>
+                    <h3>Family Trip</h3>
+                    <p>Safe and comfortable travel for families</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-users-four"></i></div>
+                    <h3>Group Tour</h3>
+                    <p>Spacious vehicles for group adventures</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-briefcase"></i></div>
+                    <h3>Corporate Tour</h3>
+                    <p>Professional travel arrangements</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="ph-fill ph-map-trifold"></i></div>
+                    <h3>Outstation Trip</h3>
+                    <p>Long distance trips outside Ghatshila</p>
+                </div>
             </div>
         </div>
     </section>
@@ -124,39 +185,7 @@
             <div class="packages-grid" id="packages-container">
                 <!-- Injected by JS -->
             </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">What We Offer</span>
-                <h2>Our Core Services</h2>
-                <p>Everything you need for a comfortable and memorable trip.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon"><i class="ph-fill ph-map-pin-line"></i></div>
-                    <h3>Local Sightseeing</h3>
-                    <p>Guided tours to all major attractions and hidden gems only locals know about.</p>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon"><i class="ph-fill ph-car-profile"></i></div>
-                    <h3>Car & SUV Rental</h3>
-                    <p>Comfortable Bolero, Scorpio, and Autos with experienced local drivers.</p>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon"><i class="ph-fill ph-buildings"></i></div>
-                    <h3>Hotel Booking</h3>
-                    <p>Exclusive budget to premium stays partnered with the best local resorts.</p>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon"><i class="ph-fill ph-cooking-pot"></i></div>
-                    <h3>Meals & Catering</h3>
-                    <p>Authentic local cuisine and packed meals arranged for all tours.</p>
-                </div>
-            </div>
+            <div class="scroll-dots" id="packages-dots"></div>
         </div>
     </section>
 
@@ -174,19 +203,6 @@
         </div>
     </section>
 
-    <!-- How to Reach Section -->
-    <section class="reach" id="reach">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">Plan Your Visit</span>
-                <h2>How to Reach Ghatshila</h2>
-                <p>Well connected by rail, road, and air — getting here is easy.</p>
-            </div>
-            <div class="reach-grid" id="reach-container">
-                <!-- Injected by JS -->
-            </div>
-        </div>
-    </section>
 
     <!-- Testimonials Section -->
     <section class="reviews" id="reviews">
@@ -222,83 +238,31 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container contact-container">
-            <div class="contact-info animate-on-scroll">
-                <span class="section-tag">Contact Us</span>
-                <h2>Get in Touch</h2>
-                <p>Ready to book? We're here to help you 24/7.</p>
-                
-                <div class="info-item">
-                    <div class="info-icon"><i class="ph-fill ph-map-pin"></i></div>
-                    <div>
-                        <h4>Visit Us</h4>
-                        <p id="contact-address">Address here</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="ph-fill ph-phone"></i></div>
-                    <div>
-                        <h4>Call Us</h4>
-                        <p><a href="#" id="contact-phone-link"><span id="contact-phone">Phone</span></a></p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="ph-fill ph-envelope"></i></div>
-                    <div>
-                        <h4>Email Us</h4>
-                        <p><a href="#" id="contact-email-link"><span id="contact-email">Email</span></a></p>
-                    </div>
-                </div>
-
-                <!-- Google Map -->
-                <div class="map-container" id="map-container">
-                    <iframe id="google-map" src="" width="100%" height="250" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-            
-            <div class="contact-form-wrapper animate-on-scroll">
-                <form id="enquiryForm" class="contact-form">
-                    <h3>Send an Enquiry</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" required placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="userphone">Phone Number *</label>
-                            <input type="tel" id="userphone" required placeholder="+91 XXXXX XXXXX">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="packageSelect">Interested In</label>
-                        <select id="packageSelect" class="form-select">
-                            <option value="General Enquiry">General Enquiry</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Your Requirements</label>
-                        <textarea id="message" rows="4" placeholder="Travel dates, group size, special requests..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
-                        <i class="ph-fill ph-paper-plane-tilt"></i> Submit Enquiry
-                    </button>
-                    <p class="form-note"><i class="ph-fill ph-clock"></i> We typically reply within 2 hours.</p>
-                </form>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
                 <a href="#" class="logo">
-                    <i class="ph-fill ph-mountains"></i>
-                    <span id="footer-brand-name">Brand Name</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="brand-logo footer-logo" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Hair / Crown -->
+                        <path d="M40 20 C60 10, 80 20, 75 35 C70 50, 50 35, 45 50" />
+                        <!-- Profile: Forehead, Nose, Mouth, Chin -->
+                        <path d="M45 50 C45 45, 55 40, 60 45 C65 50, 70 60, 65 65 C60 65, 55 70, 60 75 C65 80, 50 85, 45 85" />
+                        <!-- Ear -->
+                        <path d="M35 55 C25 50, 20 65, 35 70" />
+                        <!-- Earring -->
+                        <circle cx="32" cy="73" r="3" fill="currentColor" stroke="none" />
+                        <!-- Eye -->
+                        <path d="M50 48 C53 45, 57 45, 60 48" />
+                        <!-- Tilak -->
+                        <path d="M55 35 L55 42" stroke-width="3" />
+                        <!-- Neck / Back of Head -->
+                        <path d="M35 70 C30 80, 35 90, 45 95" />
+                    </svg>
+                    <span id="footer-brand-name">Bajrang Tours</span>
                 </a>
-                <p id="footer-tagline">Tagline here</p>
+                <p id="footer-tagline">Experience the pristine beauty with Bajrang Tours.</p>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
@@ -316,8 +280,9 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; <span id="current-year"></span> <span id="footer-copyright-name">Name</span>. All rights reserved.</p>
+            <div class="container footer-bottom-flex">
+                <p>&copy; <span id="current-year"></span> <span id="footer-copyright-name">Bajrang Tour And Travels</span>. All rights reserved.</p>
+                <p class="developer-credit">Designed & Developed by <a href="tel:+910000000000" id="dev-contact">Codecraft Digital</a></p>
             </div>
         </div>
     </footer>
@@ -331,6 +296,43 @@
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="ph ph-caret-up"></i>
     </button>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn" aria-label="Close"><i class="ph ph-x"></i></button>
+            <h3>Book Your Trip</h3>
+            <p id="bookingPackageName" class="booking-package-name"></p>
+            <form id="bookingForm" class="contact-form">
+                <input type="hidden" id="bookSubject">
+                <div class="form-group">
+                    <label for="bookName">Full Name *</label>
+                    <input type="text" id="bookName" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="bookPhone">Mobile Number *</label>
+                    <input type="tel" id="bookPhone" required placeholder="Your WhatsApp/Calling Number">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookDate">Date of Journey *</label>
+                        <input type="date" id="bookDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookPeople">No. of People *</label>
+                        <input type="number" id="bookPeople" required min="1" placeholder="e.g., 4">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bookPickup">Pickup Location</label>
+                    <input type="text" id="bookPickup" placeholder="Station, Hotel, etc.">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="ph-fill ph-whatsapp-logo"></i> Confirm on WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
