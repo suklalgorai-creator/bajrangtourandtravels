@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -49,17 +49,16 @@
         }
         .photo-caption {
             position: absolute; bottom: 0; left: 0; width: 100%;
-            padding: 1.5rem 1rem 1rem; background: linear-gradient(to top, rgba(15,23,42,0.9), transparent);
+            padding: 2rem 1rem 1rem; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
             color: white; font-weight: 600; font-size: 1.1rem;
-            transform: translateY(100%); transition: var(--transition);
+            transform: translateY(0); transition: var(--transition);
         }
-        .photo-card:hover .photo-caption { transform: translateY(0); }
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
-    <header class="navbar scrolled" id="navbar" style="background: rgba(255,255,255,0.97); box-shadow: 0 1px 20px rgba(0,0,0,0.06); padding: 0.75rem 0;">
+    <header class="navbar scrolled" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="brand-logo" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
@@ -78,7 +77,12 @@
                 <a href="index.html#packages" style="color: var(--text-main);">Packages</a>
                 <a href="places.html" style="color: var(--primary); font-weight: 700;">Places Gallery</a>
             </nav>
-            <a href="index.html" class="btn btn-primary" style="padding: 0.5rem 1.5rem;">Back to Home</a>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <button id="theme-toggle" class="btn btn-light" style="padding: 0.5rem 0.75rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-light); color: var(--secondary); border: 1px solid var(--border);" title="Toggle Dark Mode">
+                    <i class="ph ph-moon" id="theme-icon" style="font-size: 1.2rem;"></i>
+                </button>
+                <a href="index.html" class="btn btn-primary" style="padding: 0.5rem 1.5rem;">Back to Home</a>
+            </div>
         </div>
     </header>
 
@@ -90,9 +94,9 @@
     </div>
 
     <!-- Tabs -->
-    <div class="gallery-tabs" style="background: var(--bg-light); padding-bottom: 3rem; text-align: center;">
+    <div class="gallery-tabs" style="background: transparent; padding-bottom: 3rem; text-align: center;">
         <div class="container">
-            <div class="tab-buttons" style="display: inline-flex; gap: 1rem; background: var(--white); padding: 0.5rem; border-radius: 50px; box-shadow: var(--shadow-sm);">
+            <div class="tab-buttons" style="display: inline-flex; gap: 1rem; background: var(--surface); padding: 0.5rem; border-radius: 50px; box-shadow: var(--shadow-sm);">
                 <button class="tab-btn active" onclick="switchTab('ghatsila')" style="padding: 0.75rem 2rem; border-radius: 50px; border: none; font-weight: 600; font-family: inherit; font-size: 1rem; cursor: pointer; transition: 0.3s; background: var(--primary); color: white;">Ghatshila & Jadugoda</button>
                 <button class="tab-btn" onclick="switchTab('jamshedpur')" style="padding: 0.75rem 2rem; border-radius: 50px; border: none; font-weight: 600; font-family: inherit; font-size: 1rem; cursor: pointer; transition: 0.3s; background: transparent; color: var(--text-main);">Jamshedpur</button>
             </div>
@@ -104,74 +108,73 @@
         <div class="container">
             <div class="photo-grid" id="ghatsila-gallery">
                 <!-- 1. Burudi Dam -->
-                <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
-                    <span style="display:block; text-align:center;">Add Photo<br><small>Burudi Dam</small></span>
-                    <!-- <img src="images/burudi.jpg" alt="Burudi Dam"> -->
+                <div class="photo-card" style="padding: 0; background: transparent; border: none;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Burudih_Dam.jpg/1280px-Burudih_Dam.jpg" alt="Burudi Dam" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="photo-caption">Burudi Dam</div>
                 </div>
                 <!-- 2. Dharagiri Fall -->
-                <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
-                    <span style="display:block; text-align:center;">Add Photo<br><small>Dharagiri Fall</small></span>
+                <div class="photo-card" style="padding: 0; background: transparent; border: none;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrZbTxClwzxnchG87djXWMj9qttiZk142D1v18X302ZA&s" alt="Dharagiri Fall" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="photo-caption">Dharagiri Fall</div>
                 </div>
                 <!-- 3. Phuldungri Hill -->
-                <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
-                    <span style="display:block; text-align:center;">Add Photo<br><small>Phuldungri Hill</small></span>
+                <div class="photo-card" style="padding: 0; background: transparent; border: none;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf6PUl2VoYVhWGu9mCdByB-4z8T9VZG7ULqSJA7eswPQ&s" alt="Phuldungri Hill" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="photo-caption">Phuldungri Hill</div>
                 </div>
                 <!-- 4. Rankini Mandir -->
-                <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
-                    <span style="display:block; text-align:center;">Add Photo<br><small>Rankini Mandir</small></span>
+                <div class="photo-card" style="padding: 0; background: transparent; border: none;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ687Ii95Cf9auY9R6tKBSTFO4IBPqKFurqL2j9doK7bwNeQwxMUDKdpdc6&s=10" alt="Rankini Mandir" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="photo-caption">Rankini Mandir</div>
                 </div>
                 <!-- 5. Raat Mohona -->
-                <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
-                    <span style="display:block; text-align:center;">Add Photo<br><small>Raat Mohona</small></span>
+                <div class="photo-card" style="padding: 0; background: transparent; border: none;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ39Ix5i7bsgolJn9ULuehSjiy2xydHDslVxfEDoHLQjuz-JF6mJTcqjA&s=10" alt="Raat Mohona" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="photo-caption">Raat Mohona</div>
                 </div>
                 <!-- 6. Subarnarekha Riverside -->
-                <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
-                    <span style="display:block; text-align:center;">Add Photo<br><small>Subarnarekha Riverside</small></span>
+                <div class="photo-card" style="padding: 0; background: transparent; border: none;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Subarnarekha_River%2C_Ghatshila.jpg/1280px-Subarnarekha_River%2C_Ghatshila.jpg" alt="Subarnarekha Riverside" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="photo-caption">Subarnarekha Riverside</div>
                 </div>
                 <!-- 7. Galudih Barrage -->
-                <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
-                    <span style="display:block; text-align:center;">Add Photo<br><small>Galudih Barrage</small></span>
+                <div class="photo-card" style="padding: 0; background: transparent; border: none;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1umj9p_QABcD3cFxTRZZYe4p6QVMHXkL2UpwzHuNlZi1xqGy-7QEGIb8&s=10" alt="Galudih Barrage" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="photo-caption">Galudih Barrage</div>
                 </div>
                 <!-- 8. Gouri Kunj -->
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Gouri Kunj</small></span>
                 </div>
                 <!-- 9. Panch Pandav Rock -->
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Panch Pandav Rock</small></span>
                 </div>
                 <!-- 10. Ghatshila Rajbari -->
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Ghatshila Rajbari</small></span>
                 </div>
                 <!-- 11. Rankini Mandir (Rohinibera) -->
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Rankini Mandir (Rohinibera)</small></span>
                 </div>
                 <!-- 12. Galudih Bridge -->
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Galudih Bridge</small></span>
                 </div>
                 <!-- 13. Siddheshwar Nath Temple -->
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Siddheshwar Nath Temple</small></span>
                 </div>
                 <!-- 14. Jadugoda Hills -->
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Jadugoda Hills</small></span>
                 </div>
             </div>
@@ -183,19 +186,19 @@
         <div class="container">
             <div class="photo-grid" id="jamshedpur-gallery">
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Jubilee Park</small></span>
                 </div>
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Dimna Lake</small></span>
                 </div>
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Dalma Wildlife</small></span>
                 </div>
                 <div class="photo-card">
-                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block;"></i>
+                    <i class="ph ph-image" style="font-size:2.5rem; margin-bottom:0.5rem; display:block; color: #666;"></i>
                     <span style="display:block; text-align:center;">Add Photo<br><small>Tata Steel Zoological Park</small></span>
                 </div>
             </div>
@@ -241,9 +244,13 @@
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>
-                <p><i class="ph-fill ph-map-pin"></i> Ghatshila, Jharkhand</p>
-                <p><i class="ph-fill ph-phone"></i> +91 9304963169</p>
-                <p><i class="ph-fill ph-phone"></i> +91 9199042017</p>
+                <p style="color: #94a3b8; margin-bottom: 0.5rem;"><i class="ph-fill ph-map-pin" style="margin-right: 0.3rem;"></i> Ghatshila, Jharkhand</p>
+                <p style="color: #94a3b8; margin-bottom: 0.5rem;"><i class="ph-fill ph-phone" style="margin-right: 0.3rem;"></i> +91 9304963169</p>
+                <p style="color: #94a3b8; margin-bottom: 0.5rem;"><i class="ph-fill ph-phone" style="margin-right: 0.3rem;"></i> +91 9199042017</p>
+                <div class="brand-socials" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <a href="mailto:contact@bajrangtourandtravels.in" aria-label="Email" style="color: #94a3b8; font-size: 1.5rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#94a3b8'"><i class="ph-fill ph-envelope-simple"></i></a>
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram" style="color: #94a3b8; font-size: 1.5rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#94a3b8'"><i class="ph-fill ph-instagram-logo"></i></a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -261,5 +268,32 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                if (themeIcon) themeIcon.classList.replace('ph-moon', 'ph-sun');
+            }
+
+            const toggleTheme = (e) => {
+                if(e) e.preventDefault();
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                
+                if (isDark) {
+                    localStorage.setItem('theme', 'dark');
+                    if (themeIcon) themeIcon.classList.replace('ph-moon', 'ph-sun');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    if (themeIcon) themeIcon.classList.replace('ph-sun', 'ph-moon');
+                }
+            };
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        });
+    </script>
 </body>
 </html>

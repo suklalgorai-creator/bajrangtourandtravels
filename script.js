@@ -12,6 +12,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fallback: hide loader after 3.5s even if images still loading
     setTimeout(() => loader.classList.add('hidden'), 3500);
 
+    // ── Theme Toggle ──
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+    const mobileThemeText = document.getElementById('mobile-theme-text');
+
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (themeIcon) themeIcon.classList.replace('ph-moon', 'ph-sun');
+        if (mobileThemeIcon) mobileThemeIcon.classList.replace('ph-moon', 'ph-sun');
+        if (mobileThemeText) mobileThemeText.textContent = 'Light Mode';
+    }
+
+    const toggleTheme = (e) => {
+        if(e) e.preventDefault();
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        
+        if (isDark) {
+            localStorage.setItem('theme', 'dark');
+            if (themeIcon) themeIcon.classList.replace('ph-moon', 'ph-sun');
+            if (mobileThemeIcon) mobileThemeIcon.classList.replace('ph-moon', 'ph-sun');
+            if (mobileThemeText) mobileThemeText.textContent = 'Light Mode';
+        } else {
+            localStorage.setItem('theme', 'light');
+            if (themeIcon) themeIcon.classList.replace('ph-sun', 'ph-moon');
+            if (mobileThemeIcon) mobileThemeIcon.classList.replace('ph-sun', 'ph-moon');
+            if (mobileThemeText) mobileThemeText.textContent = 'Dark Mode';
+        }
+    };
+
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
     // Guard: check if data exists
     if (typeof siteData === 'undefined') return;
     const d = siteData;
