@@ -19,10 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── 1. Brand Info ──
     document.getElementById('site-title').textContent = `${d.brand.name} | Top Tour Operator`;
     document.getElementById('brand-name-nav').textContent = d.brand.name;
-    document.getElementById('footer-brand-name').textContent = d.brand.name;
-    document.getElementById('footer-copyright-name').textContent = d.brand.fullName;
-    document.getElementById('footer-tagline').textContent = d.brand.tagline;
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    const footerBrand = document.getElementById('footer-brand-name');
+    if(footerBrand) footerBrand.textContent = d.brand.name;
+    const footerCopy = document.getElementById('footer-copyright-name');
+    if(footerCopy) footerCopy.textContent = d.brand.fullName;
+    const footerTag = document.getElementById('footer-tagline');
+    if(footerTag) footerTag.textContent = d.brand.tagline;
+    const currentYear = document.getElementById('current-year');
+    if(currentYear) currentYear.textContent = new Date().getFullYear();
     const contactAddress = document.getElementById('contact-address');
     if (contactAddress) contactAddress.textContent = d.brand.address;
 
